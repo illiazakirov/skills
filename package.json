@@ -1,0 +1,27 @@
+{
+  "name": "illiazakirov-skills",
+  "private": true,
+  "description": "Illia Zakirov's agent skills and plugins",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/illiazakirov/skills"
+  },
+  "license": "MIT",
+  "workspaces": [
+    "skills/marketing"
+  ],
+  "scripts": {
+    "changeset": "changeset",
+    "version": "changeset version && node scripts/sync-plugin-version.mjs",
+    "check-plugin-version": "node scripts/sync-plugin-version.mjs --check",
+    "check-frontmatter": "node scripts/check-frontmatter.mjs",
+    "check-agnostic": "node scripts/check-agnostic.mjs",
+    "check-local": "sh scripts/check-local.sh"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.7.0",
+    "@changesets/cli": "^2.30.0",
+    "yaml": "^2.9.1"
+  },
+  "packageManager": "npm@10.9.4"
+}

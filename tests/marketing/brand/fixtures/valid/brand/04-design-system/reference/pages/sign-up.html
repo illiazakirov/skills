@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Create an account</title><script>(function(){var r=document.documentElement;if(!r.dataset.theme)r.dataset.theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';addEventListener('message',function(e){if(e.data&&e.data.brandTheme)r.dataset.theme=e.data.brandTheme})})()</script><link rel="stylesheet" href="../../tokens.css"><link rel="stylesheet" href="../system.css"><link rel="stylesheet" href="../../../03-identity/fonts/fonts.css"><style>
+.sheet,.doc{padding:var(--space-xl) var(--layout-gutter)}
+.sheet{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-xl);max-width:calc(var(--layout-content) + 2 * var(--layout-gutter));margin:0 auto}
+.sheet>section,.block .demo{display:grid;gap:var(--space-m);align-content:start}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-s)}
+.row>.t-label{flex-basis:100%}
+.doc{max-width:calc(var(--layout-content) + 2 * var(--layout-gutter));margin:0 auto}
+.doc-bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:var(--space-m);padding:var(--space-s) var(--layout-gutter);background:var(--color-bg);border-bottom:var(--border-width) solid var(--color-border)}
+.doc-bar .brand img{height:calc(var(--size-control) * .5)}
+.doc h2.part{margin:var(--space-section) 0 var(--space-l)}
+.doc h2.part:first-child{margin-top:var(--space-l)}
+.block{scroll-margin-top:calc(var(--size-control) + 2 * var(--space-s));display:grid;grid-template-columns:minmax(160px,220px) 1fr;gap:var(--space-l);padding:var(--space-xl) 0;border-top:var(--border-width) solid var(--color-border)}
+.block>header{display:grid;gap:var(--space-xs);align-content:start}
+.num{display:inline-flex;align-items:center;justify-content:center;width:var(--size-control);height:var(--size-control);border-radius:var(--radius-badge);background:var(--color-surface);border:var(--border-width) solid var(--color-border);font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);font-weight:var(--type-label-font-weight)}
+.wide{grid-column:1/-1}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:var(--space-m)}
+.swatches i{display:block;height:calc(var(--size-control) * 1.5);border-radius:var(--radius-card);border:var(--border-width) solid var(--color-border);margin-bottom:var(--space-xs)}
+.swatches code,.specs code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:var(--type-small-font-size)}
+.specs{display:grid;gap:var(--space-xs)}
+.specs td,.specs th{text-align:left;padding:var(--space-xs) var(--space-m) var(--space-xs) 0;border-bottom:var(--border-width) solid var(--color-border);vertical-align:top}
+table.specs{border-collapse:collapse;width:100%}
+.fail{color:var(--color-error)}
+.bar{height:var(--space-m);background:var(--color-accent);border-radius:var(--space-xs)}
+.shape{width:calc(var(--size-control) * 2.5);height:calc(var(--size-control) * 1.5);background:var(--color-surface);border:var(--border-control) solid var(--color-control-border)}
+.icons{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:var(--space-m)}
+.icons li{display:grid;justify-items:center;gap:var(--space-xs);padding:var(--space-m) 0}
+.frames{display:flex;flex-wrap:wrap;gap:var(--space-l);align-items:flex-start}
+.frame{overflow:hidden;border:var(--border-width) solid var(--color-border);border-radius:var(--radius-card);background:var(--color-bg)}
+.frame iframe{border:0;transform-origin:0 0;pointer-events:none}
+.frame.wide-frame{width:432px;height:270px}.frame.wide-frame iframe{width:1440px;height:900px;transform:scale(.3)}
+.frame.narrow-frame{width:195px;height:422px}.frame.narrow-frame iframe{width:390px;height:844px;transform:scale(.5)}
+.specimen{display:grid;gap:var(--space-l)}
+.specimen>div{display:grid;gap:var(--space-xs)}
+@media (max-width:600px){
+.block{grid-template-columns:1fr}
+.frame.wide-frame{width:100%;max-width:432px}
+}
+</style></head><body><header class="site-header"><div class="container"><a class="brand" href="#"><img class="logo-light" src="../../../03-identity/logo/full.svg" alt="Apple"><img class="logo-dark" src="../../../03-identity/logo/dark.svg" alt="Apple"></a><nav class="site-nav" aria-label="Main"><ul><li><a href="#">Mac</a></li><li><a href="#">Software</a></li><li><a href="#">Support</a></li></ul><a class="button button-primary" href="#">Buy now</a></nav><details class="menu"><summary class="button button-quiet" aria-label="Menu"><svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" > <line x1="4" x2="20" y1="12" y2="12" /> <line x1="4" x2="20" y1="6" y2="6" /> <line x1="4" x2="20" y1="18" y2="18" /> </svg></summary><ul><li><a href="#">Mac</a></li><li><a href="#">Software</a></li><li><a href="#">Support</a></li><li><a href="#">Buy now</a></li></ul></details></div></header><main class="auth"><div class="card"><h1 class="t-title">Create an account</h1><form action="#"><div class="field"><label class="label" for="f-up-name">Name</label><input class="input" id="f-up-name" type="text" value=""></div><div class="field"><label class="label" for="f-up-email">Email</label><input class="input" id="f-up-email" type="email" placeholder="you@example.com" aria-describedby="f-up-email-error" aria-invalid="true" value="you@example.com"><span class="error-text" id="f-up-email-error"><svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <line x1="12" x2="12" y1="8" y2="12" /> <line x1="12" x2="12.01" y1="16" y2="16" /> </svg>This address already has an account.</span></div><div class="field"><label class="label" for="f-up-password">Password</label><input class="input" id="f-up-password" type="password" value=""></div><label class="check"><input type="checkbox"> I accept the terms</label><button class="button button-primary" type="submit">Create account</button></form><p class="switch-line t-small muted">Already have one? <a href="#">Sign in</a></p></div></main><footer class="site-footer"><div class="container"><p>Apple · Fixture copy for tests.</p><ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Contact</a></li></ul></div></footer></body></html>

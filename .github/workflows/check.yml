@@ -1,0 +1,54 @@
+name: Check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  skills:
+    name: Skills (frontmatter, agnostic text, plugin versions, local files)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check frontmatter
+        run: npm run check-frontmatter
+
+      - name: Check that skills are harness-agnostic
+        run: npm run check-agnostic
+
+      - name: Check plugin versions
+        run: npm run check-plugin-version
+
+      - name: Check that no working documents or local paths are in git
+        run: npm run check-local
+
+  brand:
+    name: brand tests
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run the tests
+        run: python3 -m unittest discover -s tests

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="{{lang}}" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<style>
+  /* The shell is deliberately neutral: monochrome, one typeface, hairlines only.
+     It must not compete with the variants it presents. */
+  :root {
+    --bg: #ffffff;
+    --fg: #111111;
+    --muted: #6a6a6a;
+    --line: #d9d9d9;
+    --surface: #f2f2f2;
+  }
+  :root[data-theme="dark"] {
+    --bg: #101010;
+    --fg: #ededed;
+    --muted: #9a9a9a;
+    --line: #343434;
+    --surface: #1c1c1c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, p, ul, figure { margin: 0; }
+  a { color: inherit; text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+
+  /* One container for the bar, the intro and every variant. */
+  .wrap { max-width: 1760px; margin: 0 auto; padding: 0 32px; }
+
+  .bar { position: sticky; top: 0; z-index: 2; background: var(--bg); border-bottom: 1px solid var(--line); }
+  .bar .wrap { display: flex; align-items: center; gap: 24px; min-height: 56px; flex-wrap: wrap; }
+  .bar h1 { font-size: 16px; font-weight: 600; }
+  .bar .meta { color: var(--muted); }
+  .bar .controls { margin-left: auto; display: flex; gap: 24px; flex-wrap: wrap; }
+  .control { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; }
+  .segments { display: flex; border: 1px solid var(--line); }
+  .segments button {
+    font: inherit; color: var(--fg); background: transparent; border: 0;
+    padding: 5px 12px; cursor: pointer;
+  }
+  .segments button + button { border-left: 1px solid var(--line); }
+  .segments button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+
+  .intro { padding-top: 28px; padding-bottom: 28px; max-width: 72ch; }
+  .intro .question { font-size: 20px; line-height: 1.35; font-weight: 600; margin-bottom: 8px; }
+  .intro .answer { color: var(--muted); }
+
+  .variant { border-top: 1px solid var(--line); padding: 28px 0 44px; }
+  .variant-head { display: flex; align-items: baseline; gap: 20px; margin-bottom: 20px; }
+  .variant-head .number {
+    font-size: 56px; line-height: 1; font-weight: 600; letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums; min-width: 44px;
+  }
+  .variant-head h2 { font-size: 20px; font-weight: 600; line-height: 1.3; }
+  .variant-head .note { color: var(--muted); max-width: 72ch; }
+  .variant-head .open { margin-left: auto; white-space: nowrap; font-size: 13px; }
+
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .column { min-width: 0; }
+  .tag { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .frame { position: relative; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+  .frame iframe { position: absolute; top: 0; left: 0; border: 0; background: #ffffff; transform-origin: 0 0; }
+  .frame .image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 32px; }
+  .frame.reference { overflow-y: auto; }
+  .frame.reference img { display: block; width: 100%; height: auto; }
+  .below { padding-top: 14px; max-width: 72ch; }
+  .below h3 { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .below ul { padding-left: 18px; }
+  .below li + li { margin-top: 4px; }
+  .below .quiet { color: var(--muted); }
+
+  @media (max-width: 900px) {
+    .wrap { padding: 0 16px; }
+    .pair { grid-template-columns: 1fr; }
+    .variant-head { flex-wrap: wrap; }
+    .variant-head .open { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <h1>{{title}}</h1>
+    <span class="meta">{{meta}}</span>
+    <div class="controls">
+      {{viewport_control}}
+      <div class="control">
+        <span id="theme-label">{{label_theme}}</span>
+        <div class="segments" role="group" aria-labelledby="theme-label">
+          <button type="button" data-theme-value="light" aria-pressed="true">{{label_light}}</button>
+          <button type="button" data-theme-value="dark" aria-pressed="false">{{label_dark}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="intro">
+    {{question}}
+    <p class="answer">{{label_answer}}</p>
+  </div>
+
+  <!--gw:variant-->
+  <section class="variant" id="variant-{{number}}">
+    <div class="variant-head">
+      <div class="number">{{number}}</div>
+      <div>
+        <h2>{{variant_title}}</h2>
+        {{note}}
+      </div>
+      <a class="open" href="{{variant_href}}" target="_blank" rel="noopener">{{label_open}}</a>
+    </div>
+    <div class="pair">
+      <figure class="column">
+        <figcaption class="tag">{{label_variant}} {{number}}</figcaption>
+        <div class="frame">{{variant_media}}</div>
+        <div class="below">
+          <h3>{{label_critic}}</h3>
+          {{critic}}
+        </div>
+      </figure>
+      <figure class="column">
+        <figcaption class="tag">{{label_reference}}</figcaption>
+        <div class="frame reference" tabindex="0"><img src="{{reference_src}}" alt="{{reference_caption}}"></div>
+        <div class="below">
+          <p>{{reference_caption}}</p>
+          {{reference_source}}
+        </div>
+      </figure>
+    </div>
+  </section>
+  <!--gw:/variant-->
+</main>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var KEY = "brand-choice-theme";
+  var iframes = Array.prototype.slice.call(document.querySelectorAll(".frame iframe"));
+  var frames = Array.prototype.slice.call(document.querySelectorAll(".frame"));
+  var viewport = { width: {{default_width}}, height: {{default_height}} };
+
+  function press(buttons, active) {
+    buttons.forEach(function (button) {
+      button.setAttribute("aria-pressed", String(button === active));
+    });
+  }
+
+  // Theme: applies to the shell and is passed to every live variant.
+  var themeButtons = Array.prototype.slice.call(document.querySelectorAll("[data-theme-value]"));
+  function sendTheme(iframe) {
+    try { iframe.contentWindow.postMessage({ brandTheme: root.dataset.theme }, "*"); } catch (error) {}
+  }
+  function setTheme(theme, remember) {
+    root.dataset.theme = theme;
+    press(themeButtons, themeButtons.filter(function (b) { return b.dataset.themeValue === theme; })[0]);
+    iframes.forEach(sendTheme);
+    if (remember) { try { localStorage.setItem(KEY, theme); } catch (error) {} }
+  }
+  themeButtons.forEach(function (button) {
+    button.addEventListener("click", function () { setTheme(button.dataset.themeValue, true); });
+  });
+  iframes.forEach(function (iframe) {
+    iframe.addEventListener("load", function () { sendTheme(iframe); });
+  });
+  var stored = null;
+  try { stored = localStorage.getItem(KEY); } catch (error) {}
+  var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  setTheme(stored === "dark" || stored === "light" ? stored : (prefersDark ? "dark" : "light"), false);
+
+  // Frames: a variant renders at the chosen viewport width and is scaled to fit its column.
+  function layout() {
+    frames.forEach(function (frame) {
+      var available = frame.clientWidth;
+      var scale = Math.min(1, available / viewport.width);
+      frame.style.height = Math.round(viewport.height * scale) + "px";
+      var iframe = frame.querySelector("iframe");
+      if (iframe) {
+        iframe.style.width = viewport.width + "px";
+        iframe.style.height = viewport.height + "px";
+        iframe.style.transform = "scale(" + scale + ")";
+        iframe.style.left = Math.round((available - viewport.width * scale) / 2) + "px";
+      }
+    });
+  }
+  var viewportButtons = Array.prototype.slice.call(document.querySelectorAll("[data-viewport-width]"));
+  viewportButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      viewport = { width: Number(button.dataset.viewportWidth), height: Number(button.dataset.viewportHeight) };
+      press(viewportButtons, button);
+      layout();
+    });
+  });
+  window.addEventListener("resize", layout);
+  layout();
+})();
+</script>
+</body>
+</html>

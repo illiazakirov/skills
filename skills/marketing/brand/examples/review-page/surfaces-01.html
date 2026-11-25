@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Surfaces</title>
+<style>
+  /* The shell is deliberately neutral: monochrome, one typeface, hairlines only.
+     It must not compete with the variants it presents. */
+  :root {
+    --bg: #ffffff;
+    --fg: #111111;
+    --muted: #6a6a6a;
+    --line: #d9d9d9;
+    --surface: #f2f2f2;
+  }
+  :root[data-theme="dark"] {
+    --bg: #101010;
+    --fg: #ededed;
+    --muted: #9a9a9a;
+    --line: #343434;
+    --surface: #1c1c1c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, p, ul, figure { margin: 0; }
+  a { color: inherit; text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+
+  /* One container for the bar, the intro and every variant. */
+  .wrap { max-width: 1760px; margin: 0 auto; padding: 0 32px; }
+
+  .bar { position: sticky; top: 0; z-index: 2; background: var(--bg); border-bottom: 1px solid var(--line); }
+  .bar .wrap { display: flex; align-items: center; gap: 24px; min-height: 56px; flex-wrap: wrap; }
+  .bar h1 { font-size: 16px; font-weight: 600; }
+  .bar .meta { color: var(--muted); }
+  .bar .controls { margin-left: auto; display: flex; gap: 24px; flex-wrap: wrap; }
+  .control { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; }
+  .segments { display: flex; border: 1px solid var(--line); }
+  .segments button {
+    font: inherit; color: var(--fg); background: transparent; border: 0;
+    padding: 5px 12px; cursor: pointer;
+  }
+  .segments button + button { border-left: 1px solid var(--line); }
+  .segments button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+
+  .intro { padding-top: 28px; padding-bottom: 28px; max-width: 72ch; }
+  .intro .question { font-size: 20px; line-height: 1.35; font-weight: 600; margin-bottom: 8px; }
+  .intro .answer { color: var(--muted); }
+
+  .variant { border-top: 1px solid var(--line); padding: 28px 0 44px; }
+  .variant-head { display: flex; align-items: baseline; gap: 20px; margin-bottom: 20px; }
+  .variant-head .number {
+    font-size: 56px; line-height: 1; font-weight: 600; letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums; min-width: 44px;
+  }
+  .variant-head h2 { font-size: 20px; font-weight: 600; line-height: 1.3; }
+  .variant-head .note { color: var(--muted); max-width: 72ch; }
+  .variant-head .open { margin-left: auto; white-space: nowrap; font-size: 13px; }
+
+  .pair { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 24px; }
+  .size { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .side .below:first-child { padding-top: 0; }
+  .side .frame.reference { margin-top: 20px; max-height: 420px; }
+  .column { min-width: 0; }
+  .tag { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .frame { position: relative; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+  .frame iframe { position: absolute; top: 0; left: 0; border: 0; background: #ffffff; transform-origin: 0 0; }
+  .frame .image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 32px; }
+  .frame.reference { overflow-y: auto; }
+  .frame.reference img { display: block; width: 100%; height: auto; }
+  .below { padding-top: 14px; max-width: 72ch; }
+  .below h3 { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .below ul { padding-left: 18px; }
+  .below li + li { margin-top: 4px; }
+  .below .quiet { color: var(--muted); }
+
+  @media (max-width: 900px) {
+    .wrap { padding: 0 16px; }
+    .pair { grid-template-columns: 1fr; }
+    .variant-head { flex-wrap: wrap; }
+    .variant-head .open { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <h1>Surfaces</h1>
+    <span class="meta">Cycle 1</span>
+    <div class="controls">
+      <div class="control">
+        <span id="theme-label">Theme</span>
+        <div class="segments" role="group" aria-labelledby="theme-label">
+          <button type="button" data-theme-value="light" aria-pressed="true">Light</button>
+          <button type="button" data-theme-value="dark" aria-pressed="false">Dark</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="intro">
+    <p class="question">The surfaces, built from the fixed logo, colors, type pair and motto.</p>
+    <p class="answer">Answer in the chat with the number of the item and what to change in it, or say that everything is fixed.</p>
+  </div>
+
+  
+  <section class="variant" id="item-1">
+    <div class="variant-head">
+      <div class="number">1</div>
+      <div>
+        <h2>Site hero <span class="size">1440 × 900</span></h2>
+        
+      </div>
+      <a class="open" href="surfaces/site-hero.html" target="_blank" rel="noopener">Open full size</a>
+    </div>
+    <div class="pair">
+      <div class="column">
+        <div class="frame" data-width="1440" data-height="900"><iframe src="surfaces/site-hero.html" title="1: Site hero"></iframe></div>
+      </div>
+      <div class="column side">
+        <div class="below">
+          <h3>Critic</h3>
+          <ul><li>The headline and the lead share a left edge with the navigation; the grid holds.</li><li>The button&#x27;s orange is the only saturated color on the screen, as on the reference.</li></ul>
+        </div>
+        <div class="frame reference" tabindex="0"><img src="refs/aihero-home.png" alt="aihero.dev: one headline, one lead, one action on the first screen."></div><div class="below"><h3>Reference</h3><p>aihero.dev: one headline, one lead, one action on the first screen.</p><p class="quiet">Source: <a href="https://www.aihero.dev/" target="_blank" rel="noopener">https://www.aihero.dev/</a></p></div>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="variant" id="item-2">
+    <div class="variant-head">
+      <div class="number">2</div>
+      <div>
+        <h2>Avatar <span class="size">400 × 400</span></h2>
+        <p class="note">Shown at 400 pixels; used down to 40.</p>
+      </div>
+      <a class="open" href="surfaces/avatar.html" target="_blank" rel="noopener">Open full size</a>
+    </div>
+    <div class="pair">
+      <div class="column">
+        <div class="frame" data-width="400" data-height="400"><iframe src="surfaces/avatar.html" title="2: Avatar"></iframe></div>
+      </div>
+      <div class="column side">
+        <div class="below">
+          <h3>Critic</h3>
+          <p class="quiet">No remarks.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="variant" id="item-3">
+    <div class="variant-head">
+      <div class="number">3</div>
+      <div>
+        <h2>OG image <span class="size">1200 × 630</span></h2>
+        
+      </div>
+      <a class="open" href="surfaces/og-image.html" target="_blank" rel="noopener">Open full size</a>
+    </div>
+    <div class="pair">
+      <div class="column">
+        <div class="frame" data-width="1200" data-height="630"><iframe src="surfaces/og-image.html" title="3: OG image"></iframe></div>
+      </div>
+      <div class="column side">
+        <div class="below">
+          <h3>Critic</h3>
+          <ul><li>The motto wraps to three lines; two would read faster in a feed.</li></ul>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="variant" id="item-4">
+    <div class="variant-head">
+      <div class="number">4</div>
+      <div>
+        <h2>Email signature <span class="size">600 × 96</span></h2>
+        
+      </div>
+      <a class="open" href="surfaces/email-signature.html" target="_blank" rel="noopener">Open full size</a>
+    </div>
+    <div class="pair">
+      <div class="column">
+        <div class="frame" data-width="600" data-height="96"><iframe src="surfaces/email-signature.html" title="4: Email signature"></iframe></div>
+      </div>
+      <div class="column side">
+        <div class="below">
+          <h3>Critic</h3>
+          <p class="quiet">No remarks.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+</main>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var KEY = "brand-choice-theme";
+  var iframes = Array.prototype.slice.call(document.querySelectorAll(".frame iframe"));
+  var frames = Array.prototype.slice.call(document.querySelectorAll(".frame"));
+
+  function press(buttons, active) {
+    buttons.forEach(function (button) {
+      button.setAttribute("aria-pressed", String(button === active));
+    });
+  }
+
+  // Theme: applies to the shell and is passed to every live variant.
+  var themeButtons = Array.prototype.slice.call(document.querySelectorAll("[data-theme-value]"));
+  function sendTheme(iframe) {
+    try { iframe.contentWindow.postMessage({ brandTheme: root.dataset.theme }, "*"); } catch (error) {}
+  }
+  function setTheme(theme, remember) {
+    root.dataset.theme = theme;
+    press(themeButtons, themeButtons.filter(function (b) { return b.dataset.themeValue === theme; })[0]);
+    iframes.forEach(sendTheme);
+    if (remember) { try { localStorage.setItem(KEY, theme); } catch (error) {} }
+  }
+  themeButtons.forEach(function (button) {
+    button.addEventListener("click", function () { setTheme(button.dataset.themeValue, true); });
+  });
+  iframes.forEach(function (iframe) {
+    iframe.addEventListener("load", function () { sendTheme(iframe); });
+  });
+  var stored = null;
+  try { stored = localStorage.getItem(KEY); } catch (error) {}
+  var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  setTheme(stored === "dark" || stored === "light" ? stored : (prefersDark ? "dark" : "light"), false);
+
+  // Frames: each item renders at its own size and is scaled down to fit its column, never up.
+  function layout() {
+    frames.forEach(function (frame) {
+      if (!frame.dataset.width) { return; }
+      var width = Number(frame.dataset.width), height = Number(frame.dataset.height);
+      frame.style.width = "";
+      var scale = Math.min(1, frame.parentNode.clientWidth / width);
+      frame.style.width = Math.round(width * scale) + "px";
+      frame.style.height = Math.round(height * scale) + "px";
+      var iframe = frame.querySelector("iframe");
+      if (iframe) {
+        iframe.style.width = width + "px";
+        iframe.style.height = height + "px";
+        iframe.style.transform = "scale(" + scale + ")";
+      }
+    });
+  }
+  window.addEventListener("resize", layout);
+  layout();
+})();
+</script>
+</body>
+</html>

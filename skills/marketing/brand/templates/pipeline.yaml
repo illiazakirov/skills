@@ -1,0 +1,32 @@
+# brand pipeline state. Schema: reference/contract.md, section 2.
+# Plain "key: value" lines only; no lists, no flow syntax.
+profile: <profile id>
+market_language: <BCP 47 tag>
+
+tools:
+  image_generation: <fal | svg-only | none>
+  screenshots: <headless-chrome | manual>
+  figma_export: <on | off>
+
+budget:
+  limit: <US dollars; 0 without paid generation>
+
+steps:
+  00-intake:
+    status: in-progress
+    spent: 0
+  01-strategy:
+    status: pending
+    spent: 0
+  02-brand-platform:
+    status: pending
+    spent: 0
+  03-identity:
+    status: pending
+    spent: 0
+  04-design-system:
+    status: pending
+    spent: 0
+  05-brand-book:
+    status: pending
+    spent: 0

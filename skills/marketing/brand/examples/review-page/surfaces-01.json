@@ -1,0 +1,47 @@
+{
+  "lang": "en",
+  "title": "Surfaces",
+  "question": "The surfaces, built from the fixed logo, colors, type pair and motto.",
+  "cycle": 1,
+  "items": [
+    {
+      "title": "Site hero",
+      "file": "surfaces/site-hero.html",
+      "width": 1440,
+      "height": 900,
+      "critic": [
+        "The headline and the lead share a left edge with the navigation; the grid holds.",
+        "The button's orange is the only saturated color on the screen, as on the reference."
+      ],
+      "reference": {
+        "image": "refs/aihero-home.png",
+        "caption": "aihero.dev: one headline, one lead, one action on the first screen.",
+        "source": "https://www.aihero.dev/"
+      }
+    },
+    {
+      "title": "Avatar",
+      "note": "Shown at 400 pixels; used down to 40.",
+      "file": "surfaces/avatar.html",
+      "width": 400,
+      "height": 400,
+      "critic": []
+    },
+    {
+      "title": "OG image",
+      "file": "surfaces/og-image.html",
+      "width": 1200,
+      "height": 630,
+      "critic": [
+        "The motto wraps to three lines; two would read faster in a feed."
+      ]
+    },
+    {
+      "title": "Email signature",
+      "file": "surfaces/email-signature.html",
+      "width": 600,
+      "height": 96,
+      "critic": []
+    }
+  ]
+}

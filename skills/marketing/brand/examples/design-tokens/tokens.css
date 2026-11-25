@@ -1,0 +1,29 @@
+/* Generated from tokens.json by build_tokens.py. Do not edit; edit tokens.json. */
+
+:root {
+  --color-neutral-0: #ffffff;
+  --color-neutral-900: #16150f;
+  --color-accent: #b4451f;
+  --color-bg: var(--color-neutral-0);
+  --color-fg: var(--color-neutral-900);
+  --color-scrim: rgb(0 0 0 / 0.5);
+  --space-1: 4px;
+  --space-4: 1rem;
+  --radius-control: 6px;
+  --font-display: "Source Serif 4", "Georgia", serif;
+  --font-weight-bold: 700;
+  --type-headline-font-family: var(--font-display);
+  --type-headline-font-size: 3.5rem;
+  --type-headline-font-weight: 400;
+  --type-headline-letter-spacing: -0.5px;
+  --type-headline-line-height: 1.05;
+  --shadow-card: 0px 1px 2px 0px var(--color-scrim);
+  --motion-fast: 120ms;
+  --motion-ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+:root[data-theme="dark"] {
+  --color-bg: var(--color-neutral-900);
+  --color-fg: var(--color-neutral-0);
+  --color-accent: #e2733f;
+}

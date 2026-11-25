@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.DS_Store
+.superpowers/
+node_modules/
+
+# Working documents: specs, plans, design histories, decision records.
+# They stay in the local checkout and never go into git (see CLAUDE.md).
+docs/superpowers/
+docs/*/*/
+.agents/adr/

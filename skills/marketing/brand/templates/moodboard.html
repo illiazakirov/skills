@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #111111;
+    --muted: #6a6a6a;
+    --line: #d9d9d9;
+    --surface: #f2f2f2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101010; --fg: #ededed; --muted: #9a9a9a; --line: #343434; --surface: #1c1c1c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101010; --fg: #ededed; --muted: #9a9a9a; --line: #343434; --surface: #1c1c1c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 32px 32px 64px;
+    background: var(--bg); color: var(--fg);
+    font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  h1 { font-size: 28px; line-height: 1.2; font-weight: 600; margin: 0 0 12px; }
+  .intro { max-width: 72ch; margin: 0 0 28px; color: var(--muted); }
+  .intro p { margin: 0 0 8px; }
+  .board { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 32px 24px; }
+  figure { margin: 0; }
+  .image { display: block; border: 1px solid var(--line); background: var(--surface); }
+  .image img { display: block; width: 100%; height: auto; }
+  figcaption { padding-top: 10px; }
+  .name { font-weight: 600; }
+  .name .number { color: var(--muted); font-weight: 400; margin-right: 6px; font-variant-numeric: tabular-nums; }
+  .takes { margin: 4px 0; max-width: 60ch; }
+  .source { margin: 0; font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+  @media (max-width: 480px) { body { padding: 20px 16px 48px; } .board { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<h1>{{title}}</h1>
+{{intro}}
+<div class="board">
+<!--gw:item-->
+  <figure>
+    <a class="image" href="{{src}}" target="_blank" rel="noopener"><img src="{{src}}" alt="{{name}}" loading="lazy"></a>
+    <figcaption>
+      <div class="name"><span class="number">{{number}}</span>{{name}}</div>
+      <p class="takes">{{takes}}</p>
+      <p class="source">{{source}}</p>
+    </figcaption>
+  </figure>
+<!--gw:/item-->
+</div>
+<script>addEventListener('message',function(e){if(e.data&&e.data.brandTheme)document.documentElement.dataset.theme=e.data.brandTheme})</script>
+</body>
+</html>

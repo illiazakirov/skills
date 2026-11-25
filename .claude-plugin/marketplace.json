@@ -1,0 +1,17 @@
+{
+  "name": "illiazakirov",
+  "owner": {
+    "name": "Illia Zakirov",
+    "url": "https://github.com/illiazakirov"
+  },
+  "description": "Illia Zakirov's skills and plugins, for any coding agent.",
+  "plugins": [
+    {
+      "name": "marketing",
+      "source": "./skills/marketing",
+      "description": "Marketing skills. brand: a brand agency that leads a founder's idea through strategy, brand platform, identity and a design system to a brand book and a kit for agents.",
+      "category": "marketing",
+      "keywords": ["marketing", "branding", "brand-strategy", "identity", "design-system", "brand-book"]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Variant 1</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#16181d;--muted:#5d6470;--line:#e2dfd7;--accent:#1f4fd8}
+:root[data-theme=dark]{--bg:#0f1115;--fg:#eef0f4;--muted:#9aa2b1;--line:#262a33;--accent:#8fb0ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.55 Georgia,"Times New Roman",serif}
+.c{max-width:1120px;margin:0 auto;padding:0 40px}
+nav{display:flex;justify-content:space-between;padding:28px 0;border-bottom:1px solid var(--line);font:15px/1 Helvetica,Arial,sans-serif}
+nav span+span{margin-left:28px;color:var(--muted)}
+.hero{padding:120px 0 96px;max-width:820px}
+h1{font-size:76px;line-height:1.02;letter-spacing:-.02em;font-weight:400;margin:0 0 28px}
+p{color:var(--muted);font-size:22px;margin:0 0 36px;max-width:620px}
+a{font:600 16px/1 Helvetica,Arial,sans-serif;color:var(--accent);text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:6px}
+</style><script>addEventListener('message',function(e){if(e.data&&e.data.brandTheme)document.documentElement.dataset.theme=e.data.brandTheme})</script></head>
+<body><div class="c"><nav><b>Sample Name</b><div><span>Writing</span><span>Courses</span><span>About</span></div></nav>
+<section class="hero"><h1>Notes on building software that lasts.</h1><p>Essays and short courses for engineers who would rather understand a system than memorise it.</p><a href="#">Read the latest essay</a></section></div></body></html>

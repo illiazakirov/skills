@@ -1,0 +1,56 @@
+profile: personal-brand
+market_language: uk
+
+tools:
+  image_generation: svg-only
+  screenshots: manual
+  figma_export: off
+
+budget:
+  limit: 10.00
+
+steps:
+  00-intake:
+    status: approved
+    version: dfd26c910c06
+    spent: 0
+  01-strategy:
+    status: approved
+    version: 78aa23ba742d
+    built_on:
+      00-intake: dfd26c910c06
+    spent: 0
+  02-brand-platform:
+    status: approved
+    version: 6e136ca21336
+    built_on:
+      00-intake: dfd26c910c06
+      01-strategy: 78aa23ba742d
+    spent: 0
+  03-identity:
+    status: approved
+    version: ef0502fad024
+    built_on:
+      00-intake: dfd26c910c06
+      01-strategy: 78aa23ba742d
+      02-brand-platform: 6e136ca21336
+    spent: 2.50
+  04-design-system:
+    status: approved
+    version: 8eb4b0a7e330
+    built_on:
+      00-intake: dfd26c910c06
+      01-strategy: 78aa23ba742d
+      02-brand-platform: 6e136ca21336
+      03-identity: ef0502fad024
+    spent: 0
+  05-brand-book:
+    status: approved
+    version: 1bddfc23e2fc
+    built_on:
+      00-intake: dfd26c910c06
+      01-strategy: 78aa23ba742d
+      02-brand-platform: 6e136ca21336
+      03-identity: ef0502fad024
+      04-design-system: 8eb4b0a7e330
+    spent: 0

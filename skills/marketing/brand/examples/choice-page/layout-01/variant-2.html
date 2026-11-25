@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Variant 2</title>
+<style>
+:root{--bg:#ffffff;--fg:#0b0b0c;--muted:#666a73;--panel:#f1f3f5;--accent:#e4572e}
+:root[data-theme=dark]{--bg:#0b0b0c;--fg:#f5f5f6;--muted:#a0a4ad;--panel:#17181b;--accent:#ff7a52}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 Helvetica,Arial,sans-serif}
+.c{max-width:1240px;margin:0 auto;padding:0 40px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0;font-size:15px}
+nav span+span{margin-left:24px;color:var(--muted)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding:72px 0}
+h1{font-size:64px;line-height:1.04;letter-spacing:-.035em;font-weight:800;margin:0 0 24px}
+p{color:var(--muted);font-size:20px;margin:0 0 32px;max-width:520px}
+.btn{display:inline-block;background:var(--accent);color:#fff;font-weight:700;padding:16px 26px;border-radius:10px;text-decoration:none}
+.panel{background:var(--panel);border-radius:20px;aspect-ratio:4/5;display:flex;align-items:flex-end;padding:28px;color:var(--muted);font-size:14px}
+</style><script>addEventListener('message',function(e){if(e.data&&e.data.brandTheme)document.documentElement.dataset.theme=e.data.brandTheme})</script></head>
+<body><div class="c"><nav><b>Sample Name</b><div><span>Writing</span><span>Courses</span><span>About</span></div></nav>
+<section class="hero"><div><h1>Build software that lasts.</h1><p>Essays and short courses for engineers who would rather understand a system than memorise it.</p><a class="btn" href="#">Start with the free course</a></div><div class="panel">Portrait</div></section></div></body></html>

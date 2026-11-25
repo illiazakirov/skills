@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="{{lang}}" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{name}}</title>
+{{fonts_link}}
+<style>
+:root{--bg:{{light_background}};--fg:{{light_text}};--accent:{{light_accent}};--on-accent:{{light_on_accent}};
+--display:{{display}};--text:{{text}}}
+html[data-theme="dark"]{--bg:{{dark_background}};--fg:{{dark_text}};--accent:{{dark_accent}};--on-accent:{{dark_on_accent}}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--text);font-size:18px;line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;padding:0 40px}
+header{display:flex;align-items:center;gap:20px;padding:28px 0}
+.logo{display:flex;align-items:center}
+.logo svg{display:block;height:32px;width:auto}
+.logo .name{font-family:var(--display);font-size:22px;line-height:1}
+.logo-dark{display:none}
+html[data-theme="dark"] .has-dark .logo-light{display:none}
+html[data-theme="dark"] .has-dark .logo-dark{display:flex}
+.motto{font-family:var(--display);font-size:28px;line-height:1.2;margin:96px 0 0;padding-top:28px;border-top:1px solid color-mix(in srgb,currentColor 16%,transparent);max-width:34em}
+main{padding:120px 0 160px}
+h1{font-family:var(--display);font-weight:inherit;font-size:72px;line-height:1.04;letter-spacing:-.015em;margin:0;max-width:14em}
+h1{font-weight:500}
+p.lead{font-size:20px;max-width:34em;margin:32px 0 0}
+a.button{display:inline-block;margin-top:44px;padding:16px 28px;background:var(--accent);color:var(--on-accent);font-family:var(--text);font-size:17px;font-weight:600;text-decoration:none;border-radius:4px}
+@media (max-width:700px){
+.wrap{padding:0 20px}
+header{padding:20px 0;gap:14px;flex-wrap:wrap}
+main{padding:56px 0 80px}
+h1{font-size:40px}
+p.lead{font-size:18px;margin-top:24px}
+a.button{margin-top:32px}
+.motto{font-size:22px;margin-top:56px;padding-top:20px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="{{header_class}}">{{logo}}</header>
+<main>
+<h1>{{promise}}</h1>
+<p class="lead">{{paragraph}}</p>
+<a class="button" href="#">{{button}}</a>
+{{motto}}
+</main>
+</div>
+<script>addEventListener('message',function(e){if(e.data&&e.data.brandTheme)document.documentElement.dataset.theme=e.data.brandTheme})</script>
+</body>
+</html>

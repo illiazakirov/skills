@@ -1,0 +1,13 @@
+{
+  "name": "marketing",
+  "version": "1.0.0",
+  "description": "Marketing skills for any coding agent. brand is a brand agency: it leads a founder's idea through a kickoff, strategy, brand platform, identity and a UI design system to a brand book, and hands over the finished brand as one kit with instructions for agents.",
+  "author": {
+    "name": "Illia Zakirov"
+  },
+  "homepage": "https://github.com/illiazakirov/skills",
+  "repository": "https://github.com/illiazakirov/skills",
+  "license": "MIT",
+  "keywords": ["marketing", "branding", "brand-strategy", "identity", "design-system", "design-tokens", "brand-book"],
+  "skills": ["./brand"]
+}

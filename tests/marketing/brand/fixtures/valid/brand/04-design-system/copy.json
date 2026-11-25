@@ -1,0 +1,36 @@
+{
+  "lang": "en",
+  "nav": ["Mac", "Software", "Support"],
+  "header_button": "Buy now",
+  "hero": {
+    "headline": "Think different.",
+    "lead": "The new iMac. Five flavors, one cable to the internet, nothing beige.",
+    "button": "See the iMac",
+    "secondary": "Watch the film"
+  },
+  "benefits": {
+    "title": "Why iMac",
+    "items": [
+      {"title": "On the internet in ten minutes", "text": "Plug it in, connect the phone line, and you are there."},
+      {"title": "Five flavors", "text": "Blueberry, Grape, Tangerine, Lime, Strawberry. Pick one."},
+      {"title": "No beige", "text": "The computer you want on your desk, not under it."}
+    ]
+  },
+  "testimonial": {"quote": "Sorry, no beige.", "name": "Apple", "role": "Advertising, 1999"},
+  "call": {"headline": "Chic. Not geek.", "text": "Find the iMac at a store near you.", "button": "Find a store"},
+  "footer": {"text": "Fixture copy for tests.", "links": ["Privacy", "Terms", "Contact"]},
+  "sign_in": {"title": "Sign in", "email": "Email", "password": "Password", "button": "Sign in", "switch": "No account yet?", "switch_link": "Create one"},
+  "sign_up": {"title": "Create an account", "name": "Name", "email": "Email", "password": "Password", "terms": "I accept the terms", "button": "Create account", "error": "This address already has an account.", "switch": "Already have one?", "switch_link": "Sign in"},
+  "ui": {
+    "placeholder": "you@example.com",
+    "help": "We never share it.",
+    "select": "Flavor",
+    "options": ["Blueberry", "Grape", "Tangerine"],
+    "checkbox": "Send me the newsletter",
+    "radios": ["Monthly", "Yearly"],
+    "switch": "Dark mode",
+    "badge": "New",
+    "notices": {"info": "A new version is ready.", "success": "Your order is on its way.", "warning": "Your card expires this month.", "error": "The payment did not go through."},
+    "card": {"title": "iMac DV", "text": "Edit your own movies, from the box."}
+  }
+}

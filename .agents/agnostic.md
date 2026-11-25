@@ -1,0 +1,12 @@
+# Every skill works with any agent and any model
+
+A skill here is installed by Claude Code, Codex, Copilot, VS Code, Gemini CLI and skills.sh, and each of them copies it, places it and invokes it differently. A skill that leans on one of them installs everywhere and breaks everywhere else. `scripts/check-agnostic.mjs` enforces rules 1, 2, 4 and 5 on every file under `skills/`.
+
+1. **Paths.** A skill names its files relative to its own folder, the folder holding its `SKILL.md`. `SKILL.md` says so at the top: resolve that folder once to an absolute path and use it in every command. In command examples the folder is `"$GW"`, always in double quotes, because install paths contain spaces. Never `${CLAUDE_PLUGIN_ROOT}`, which only Claude Code expands. Everything a skill uses at run time lives inside its folder: skills.sh and Gemini copy one skill folder at a time, and Codex drops symlinks. A skill never reaches into another skill's folder.
+2. **Frontmatter.** `name` and `description` for a model-invoked skill; a user-invoked one adds `disable-model-invocation: true`, paired with `policy.allow_implicit_invocation: false` in `agents/openai.yaml`. No `allowed-tools`: its patterns cannot be written without a harness variable.
+3. **Subagents.** A skill that needs an independent judge says "start a subagent with a fresh context window" and hands it a prompt file from its own folder plus the inputs. It never names an agent type. If the harness cannot start a subagent, the step stops and says so; it never does the judge's work itself.
+4. **Tools.** Skill text names no harness tool (`AskUserQuestion`, `TodoWrite`, `WebFetch`, `WebSearch`, "the Task tool", "the Agent tool", "the Skill tool") and no `mcp__` tool. An optional integration is described by what it does: "if Figma tools are connected in this session".
+5. **Commands.** A skill is referred to by its name and argument (`brand intake`), never by one harness's slash syntax (`/brand:intake`). The exact form for each agent lives in the docs page and the install block.
+6. **Model.** No model names and no feature of one model. Every subagent starts with a fresh context window: some harnesses fork the parent conversation by default, and a fork inherits what the subagent was meant to escape.
+
+A skill also says what it needs from the machine (an interpreter, a browser, the network) in a Requirements section of its `SKILL.md`, so an agent can stop with a reason instead of failing halfway.
